@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) 2022 Biandenhuo Co., Ltd
+ */
+
+/dts-v1/;
+
+#include "rk3399-vivid-unit-v11.dts"
+
+/ {
+	compatible = "rockchip,linux", "rockchip,rk3399-vivid-unit-v13", "rockchip,rk3399";
+};
+
+&dsipanel {
+	reset-gpios = <&gpio4 29 GPIO_ACTIVE_LOW>;      /*GPIO4_D5*/
+	enable-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;    /*GPIO1_B5*/
+
+	prepare-delay-ms = <20>;
+	reset-delay-ms = <20>;
+	init-delay-ms = <20>;
+	enable-delay-ms = <20>;
+	disable-delay-ms = <20>;
+	unprepare-delay-ms = <20>;
+};

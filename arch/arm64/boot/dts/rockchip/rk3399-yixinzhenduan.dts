@@ -1,0 +1,10 @@
+/*
+ * Chipsee
+ */
+
+/dts-v1/;
+#include "rk3399-eisd-cs12800p-1280800.dts"
+
+/ {
+	compatible = "rockchip,linux ", "rockchip,rk3399-eisd-cs12800p-1280800 ","CS12800R101P ", "pwm1 ", "yixinzhenduan ", "rockchip,rk3399\n";
+};

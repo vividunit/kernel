@@ -1,0 +1,78 @@
+/*
+ * Copyright (c) 2022 Biandenhuo Co., Ltd
+ */
+
+/dts-v1/;
+
+#include "rk3399-vivid-core.dtsi"
+#include "rk3399-linux.dtsi"
+
+//#include "rpi-camera-v1p3-v11.dtsi"
+#include "rpi-camera-v2-v11.dtsi"
+
+//#include "mipi-lcd-AML55033001A.dtsi" 
+//#include "mipi-lcd-AML055T025A.dtsi"
+#include "mipi-lcd-JH550172Q.dtsi"
+
+/ {
+	model = "RK3399 VIVID (Linux)";
+	compatible = "rockchip,linux", "rockchip,rk3399-vivid-unit-v11", "rockchip,rk3399";
+	chosen {
+                bootargs = "earlycon=uart8250,mmio32,0xff1a0000 console=ttyFIQ0 rw root=PARTUUID=614e0000-0000 rootfstype=ext4 rootwait coherent_pool=1m";
+        };
+
+/*
+	rk_headset: rk-headset {
+                compatible = "rockchip_headset";
+                headset_gpio = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&hp_det>;
+        };
+*/
+};
+
+// IO 3V0
+//&io_domains {
+//        status = "okay";
+//        bt656-supply = <&vcc_3v0>;
+//};
+
+&es8316 {
+	hp-det-gpio = <&gpio3 30 GPIO_ACTIVE_HIGH>; /*HP_DET GPIO3_D6*/
+};
+
+&sdhci {
+	assigned-clock-rates = <150000000>;
+};
+
+&fiq_debugger {
+	rockchip,baudrate = <115200>;  /* Only 115200 and 1500000 */
+};
+
+&backlight {
+	status = "okay";
+	default-brightness-level = <248>;       /* 97%  */
+	pwms = <&pwm1 0 1000000 0>; /* 1000 000 000 / 2000 000 = 500MHz */
+};
+
+&dsi_in_vopl {
+	status = "okay";
+};
+
+&hdmi_in_vopb {
+	status = "okay";
+};
+
+&display_subsystem {
+	status = "okay";
+};
+
+&route_dsi {
+	status = "okay";
+	connect = <&vopl_out_dsi>;
+};
+
+&route_hdmi {
+	status = "disabled";
+	connect = <&vopb_out_hdmi>;
+};
