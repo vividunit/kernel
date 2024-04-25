@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2022 Biandenhuo Co., Ltd
+ */
+
+/dts-v1/;
+
+#include "rk3399-vivid-unit-v13.dts"
+
+/ {
+	compatible = "rockchip,linux", "rockchip,rk3399-vivid-unit-has-v13", "rockchip,rk3399";
+	chosen {
+                bootargs = "earlycon=uart8250,mmio32,0xff1a0000 console=ttyFIQ0 rw root=PARTUUID=614e0000-0000 rootfstype=ext4 rootwait coherent_pool=1m systemd.unified_cgroup_hierarchy=0";
+        };
+};

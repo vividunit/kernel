@@ -164,5 +164,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vivid-unit-v10.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vivid-unit-v10-5d.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vivid-unit-v11.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vivid-unit-v13.dtb
+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vivid-unit-has-v13.dtb
 
 subdir-y := $(dts-dirs) overlay
